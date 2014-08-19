@@ -5,7 +5,7 @@
 # Uses descriptive activity names to name the activities, descriptive variable names. 
 # Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
-setwd("~/git/GcD/GcD-proj/UCI HAR Dataset")
+# setwd("~/git/GcD/GcD-proj/UCI HAR Dataset")
 
 # activity_labels.txt: Links the class labels with their activity name
 activities <- read.table( './activity_labels.txt', header=FALSE, sep = " ", col.names = c("id", "activity") );
