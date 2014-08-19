@@ -5,7 +5,7 @@
 # Uses descriptive activity names to name the activities, descriptive variable names. 
 # Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
-# setwd("~/git/GcD/GcD-proj/UCI HAR Dataset")
+setwd("~/git/GcD/GcD-proj/UCI HAR Dataset")
 
 # activity_labels.txt: Links the class labels with their activity name
 activities <- read.table( './activity_labels.txt', header=FALSE, sep = " ", col.names = c("id", "activity") );
@@ -43,7 +43,7 @@ all_y <- rbind( y_train, y_test )  # Join test and train activities
 
 # Transform Y dataframe of ids into descriptive activity
 # Cant use merge() because rows are by default lexicographically sorted on the common columns
-all_y$activity = activities[ all_y$id, 2 ]
+all_y$activity <- activities[ all_y$id, 2 ]
 all_y$id <- NULL  # drop id column since descriptive activity column is appended
 
 merged_tidy <- cbind( all_subjects, all_y, all_x  )
