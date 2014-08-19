@@ -52,18 +52,12 @@ There is one R script called `run_analysis.R` that does the following.
 
 ### Output files
 
-`run_analysis.R` creates two tidy data files:
+`run_analysis.R` creates a tidy data file:
 
 <!-- -->
-
-    ...
-    
-    # Tidy data set
-    run_analysis.R:write.table(merged_tidy, "merged_tidy.txt")
-    ...
-    
+        
     # Create a second, independent tidy data set with the average of each variable, activity and subject
-    run_analysis.R:write.table( tidy_mean, "tidy_mean.txt", row.name=FALSE )
+    run_analysis.R:write.table( tidy_data, "tidy_data.txt", row.name=FALSE )
     
 
 

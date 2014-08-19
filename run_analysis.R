@@ -47,7 +47,6 @@ all_y$activity <- activities[ all_y$id, 2 ]
 all_y$id <- NULL  # drop id column since descriptive activity column is appended
 
 merged_tidy <- cbind( all_subjects, all_y, all_x  )
-write.table(merged_tidy, "merged_tidy.txt")
 
 # Cleanup
 rm( subject_test, subject_train, x_test, x_train, y_test, y_train ) 
@@ -55,5 +54,6 @@ rm( subject_test, subject_train, x_test, x_train, y_test, y_train )
 # Create a second, independent tidy data set with the average of each variable, activity and subject
 library(reshape2)
 melted_data <- melt( merged_tidy, id=c("subject","activity") )
-tidy_mean = dcast( melted_data, subject + activity ~ variable, fun.aggregate=mean )
-write.table( tidy_mean, "tidy_mean.txt", row.name=FALSE )
+tidy_data = dcast( melted_data, subject + activity ~ variable, fun.aggregate=mean )
+write.table( tidy_data, "tidy_data.txt", row.name=FALSE )
+

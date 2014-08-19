@@ -54,7 +54,8 @@ train/y_train.txt and y_test.txt activity IDs are joined.
 
 * Activity IDs are transformed to the descriptive names
 
-* The subjects, X (activity data), Y (activity IDs transformed to names) are joined using `cbind()` to a merged_tidy.txt file. 
+* The subjects, X (activity data), Y (activity IDs transformed to names) are joined using `cbind()` 
+  into a wide data frame: `merged_tidy` 
 
 `run_analysis` then creates a second, independent tidy data set: tidy_mean.txt: 
 
@@ -82,17 +83,28 @@ train/y_train.txt and y_test.txt activity IDs are joined.
 
 `features`: 561 obs. of 2 variables: id (int), featuretype (Factor w/ 477 levels)
 
-`melted_data` (intermediate data.frame: 679734 obs. of 4 variables: 
-  subject (int), activity (Factor w/ 6 levels), various (Factor w/ 66 levels)
-
 temporary variables: 
   `subject_test, subject_train, x_test, x_train, y_test, y_train`
 
-#### Output data.frames and files:
+#### Output data.frames and file:
 
 `merged_tidy`: 10299 obs. of 68 variables: subject (int), activity (Factor w/ 6 levels), filtered features (num)
+is the wide style of tidy data, then reformed into a narrow tidy data set using `melt()` and `dcast()`
 
-`tidy_mean`: 180 obs. of 68 variables: subject (int), activity (Factor w/ 6 levels), filtered features (num)
+`melted_data` (intermediate data.frame: 679734 obs. of 4 variables: 
+  subject (int), activity (Factor w/ 6 levels), various (Factor w/ 66 levels)
+
+<!-- -->
+
+    # Create a second, independent tidy data set with the average of each variable, activity and subject
+    library(reshape2)
+    melted_data <- melt( merged_tidy, id=c("subject","activity") )
+    tidy_data = dcast( melted_data, subject + activity ~ variable, fun.aggregate=mean )
+    write.table( tidy_data, "tidy_data.txt", row.name=FALSE )
+
+`tidy_data`: 180 obs. of 68 variables: subject (int), activity (Factor w/ 6 levels), filtered features (num)
+
+`tidy_data` is written out as a file: `tidy_data.txt`
 
 
 END
