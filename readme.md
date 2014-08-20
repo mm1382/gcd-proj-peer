@@ -57,7 +57,7 @@ There is one R script called `run_analysis.R` that does the following.
 <!-- -->
         
     # Create a second, independent tidy data set with the average of each variable, activity and subject
-    run_analysis.R:write.table( tidy_data, "tidy_data.txt", row.name=FALSE )
+    write.table( tidy_data, "tidy_data.txt", row.name=FALSE )
     
 
 
