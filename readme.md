@@ -1,7 +1,7 @@
 ---
 title: "Readme.md"
 author: "mark menditto"
-date: "August 18, 2014"
+date: "August 20, 2014"
 output: html_document
 ---
 

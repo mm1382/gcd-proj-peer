@@ -1,7 +1,7 @@
 ---
 title: "CodeBook"
 author: "mark menditto"
-date: "August 18, 2014"
+date: "August 20, 2014"
 output:
   html_document: default
 ---
@@ -39,7 +39,11 @@ features.txt: List of all (561) features
 
 * filters out all activities besides those that end in -mean() and -std() into a `filteredidx` index variable
 * Filtering reduces the 561 features to 66. 
-* converts them to lowercase, and removes parens () to create a descriptive label
+* converts them to lowercase, and removes parens (), underscores, hyphens, and commas to create a descriptive label
+  
+  NOTE: descriptive label transformation in this way does not necessarily improve readability, but is applied to provide
+  a consistent methodology in terms of grading the assignment. There is no consensus which way is better. 
+  
 * Factors are preserved.
 
 /train/subject_train.txt' and subject_test.txt are joined

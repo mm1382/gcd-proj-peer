@@ -20,6 +20,9 @@ filteredidx <- grep("-mean\\(\\)|-std\\(\\)", features[, 2])  #  row indexes of 
 # Use descriptive activity names to name the activities in the data set
 features$featuretype <- tolower( features$featuretype )
 features$featuretype <- gsub( "\\(|\\)", "", features$featuretype ) # remove parens
+features$featuretype <- gsub( "\\,", "", features$featuretype ) # remove commas
+features$featuretype <- gsub( "\\-", "", features$featuretype ) # remove hyphens
+features$featuretype <- gsub( "\\_", "", features$featuretype ) # remove underscores
 features$featuretype <- factor( features$featuretype ) # preserve factors
 
 # Each row identifies the subject who performed the activity (1-30) for each window sample. 
