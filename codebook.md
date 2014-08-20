@@ -57,7 +57,7 @@ train/y_train.txt and y_test.txt activity IDs are joined.
 * The subjects, X (activity data), Y (activity IDs transformed to names) are joined using `cbind()` 
   into a wide data frame: `merged_tidy` 
 
-`run_analysis` then creates a second, independent tidy data set: tidy_mean.txt: 
+`run_analysis` then creates a second, independent tidy data set, written to file `tidy_mean.txt`
 
 * with the average of each variable, 
 * activity and subject, using `melt()` and `dcast()`
@@ -102,9 +102,7 @@ is the wide style of tidy data, then reformed into a narrow tidy data set using 
     tidy_data = dcast( melted_data, subject + activity ~ variable, fun.aggregate=mean )
     write.table( tidy_data, "tidy_data.txt", row.name=FALSE )
 
-`tidy_data`: 180 obs. of 68 variables: subject (int), activity (Factor w/ 6 levels), filtered features (num)
-
-`tidy_data` is written out as a file: `tidy_data.txt`
+`tidy_data`: 180 obs. of 68 variables: subject (int), activity (Factor w/ 6 levels), filtered features (num), written out as a file: `tidy_data.txt`
 
 
 END
